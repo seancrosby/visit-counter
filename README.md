@@ -1,4 +1,4 @@
-# Hello Vercel (Next.js)
+# Visit Counter (Next.js)
 
 A minimal Next.js application designed for auto-deployment to Vercel via GitHub, featuring a 90s-style hit counter.
 
