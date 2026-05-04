@@ -4,26 +4,31 @@ A minimal Next.js application designed for auto-deployment to Vercel via GitHub,
 
 ## Vercel Setup Guide
 
-Follow these steps to deploy and enable the visit counter:
+### 1. Automated Deployment (GitHub Actions)
 
-1.  **Push to GitHub**:
-    - Create a new repository on GitHub.
-    - Push this code to the `main` branch.
+This project is configured for automated deployment via GitHub Actions.
 
-2.  **Import to Vercel**:
-    - Log in to [Vercel](https://vercel.com).
-    - Click **"Add New..."** -> **"Project"**.
-    - Import your GitHub repository.
-    - Vercel will automatically detect Next.js settings. Click **"Deploy"**.
+1.  **Repository Secrets**: Add the following secrets to your GitHub repository (**Settings > Secrets and variables > Actions**):
+    - `VERCEL_TOKEN`: Your Vercel Personal Access Token.
+    - `VERCEL_ORG_ID`: Your Vercel Organization ID.
+    - `VERCEL_PROJECT_ID`: Your Vercel Project ID.
 
-3.  **Enable Visit Counter (Vercel KV)**:
-    - Once deployed, go to the project dashboard in Vercel.
-    - Click on the **"Storage"** tab.
-    - Click **"Create Database"** and select **"KV"**.
+2.  **Deployment**: Once configured, pushes to the `main` branch will automatically trigger a production deployment.
+
+### 2. Enable Visit Counter (Vercel KV)
+
+1.  **Create KV Store**:
+    - Go to the project dashboard in [Vercel](https://vercel.com).
+    - Navigate to the **"Storage"** tab and click **"Create Database"** -> **"KV"**.
     - Follow the prompts to create the database (Redis).
-    - Once created, click **"Connect"** and select your project.
-    - This will automatically inject the `KV_URL`, `KV_REST_API_URL`, etc., environment variables into your project.
-    - **Re-deploy** your project (or push a small change) to pick up the new environment variables.
+
+2.  **Link to Project**:
+    - Click **"Connect"** and select your project.
+    - This automatically injects the required environment variables (`KV_URL`, etc.).
+
+3.  **Finalize**:
+    - If you are using automated deployment, ensure the secrets are set correctly, then trigger a redeploy from your GitHub repository to pick up the new environment configuration.
+
 
 ## Local Development
 
