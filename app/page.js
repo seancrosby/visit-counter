@@ -1,11 +1,13 @@
-import { kv } from '@vercel/kv';
+import { Redis } from '@upstash/redis';
 
 export const dynamic = 'force-dynamic';
+
+const redis = Redis.fromEnv();
 
 export default async function Home() {
   let visits = 0;
   try {
-    visits = await kv.incr('visits');
+    visits = await redis.incr('visits');
   } catch (error) {
     console.error('Failed to increment visit counter:', error);
   }

@@ -15,19 +15,20 @@ This project is configured for automated deployment via GitHub Actions.
 
 2.  **Deployment**: Once configured, pushes to the `main` branch will automatically trigger a production deployment.
 
-### 2. Enable Visit Counter (Vercel KV)
+### 2. Enable Visit Counter (Redis)
 
-1.  **Create KV Store**:
+1.  **Create Redis Database**:
     - Go to the project dashboard in [Vercel](https://vercel.com).
-    - Navigate to the **"Storage"** tab and click **"Create Database"** -> **"KV"**.
-    - Follow the prompts to create the database (Redis).
+    - Navigate to the **"Storage"** tab and click **"Create Database"** -> **"Redis"** (via Upstash).
+    - Follow the prompts to create the database.
 
 2.  **Link to Project**:
     - Click **"Connect"** and select your project.
-    - This automatically injects the required environment variables (`KV_URL`, etc.).
+    - This automatically injects the required environment variables (`UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`, etc.).
 
 3.  **Finalize**:
     - If you are using automated deployment, ensure the secrets are set correctly, then trigger a redeploy from your GitHub repository to pick up the new environment configuration.
+
 
 
 ## Local Development
